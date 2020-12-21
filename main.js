@@ -72,6 +72,27 @@ function createPomodoro() {
     let breakTime = parseInt(document.querySelector("#breakNumber").textContent)
     let numberOfSessions = parseInt(document.querySelector("#sessionNumber").textContent)
 
+    let error = 0;
+
+    if (workingTime === 0) {
+        ohSnap('Os minutos de trabalho deve ser maior que zero!', {color: 'red'});
+        error++;
+    }
+    
+    if (breakTime === 0) {
+        ohSnap('Os minutos de pausa deve ser maior que zero!', {color: 'red'});
+        error++;
+    }
+    
+    if (numberOfSessions === 0) {
+        ohSnap('O numero de sessões deve ser maior que zero!', {color: 'red'});
+        error++;
+    }
+
+    if (error > 0) {
+        return;
+    }
+
     sessionStorage.setItem('workingTime', workingTime)
     sessionStorage.setItem('breakTime', breakTime)
     sessionStorage.setItem('numberOfSessions', numberOfSessions)
